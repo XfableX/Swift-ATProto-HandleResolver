@@ -17,7 +17,6 @@
  
  */
 import AsyncDNSResolver
-import Alamofire
 import Foundation
 import dnssd
 import OAuth2
