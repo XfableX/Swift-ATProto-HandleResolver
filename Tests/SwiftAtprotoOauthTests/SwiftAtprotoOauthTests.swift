@@ -9,7 +9,7 @@ import Foundation
     catch {
         Issue.record("Failed to resolve")
     }
-    
+    //This is the first persons domain i found who used the _atproto dns method so shoutouts to Luke for being my test case.
     do {await #expect(try oauthManager.resolveEndpoint(handle: "lukeplunkett.com") == URL(string: "https://amanita.us-east.host.bsky.network"))
     }
     catch {
