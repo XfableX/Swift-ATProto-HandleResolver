@@ -6,7 +6,6 @@
 //
 
 import AsyncDNSResolver
-import Alamofire
 import Foundation
 import dnssd
 
