@@ -24,6 +24,11 @@ import OAuth2
 @available(macOS 12.0, *)
 open class SwiftAtprotoOauth {
     
+    public init(){
+        
+    }
+    
+    
     public func resolveEndpoint(handle: String) async throws -> URL {
         do{
             let did = try await resolveDID(handle: handle)
