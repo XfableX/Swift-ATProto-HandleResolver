@@ -22,7 +22,7 @@ import dnssd
 import OAuth2
 
 @available(macOS 12.0, *)
-class SwiftAtprotoOauth {
+open class SwiftAtprotoOauth {
     
     public func resolveEndpoint(handle: String) async throws -> URL {
         do{
