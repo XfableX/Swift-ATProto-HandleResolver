@@ -115,6 +115,14 @@ open class SwiftAtprotoOauth {
         return metadata["authorization_endpoint"] as! String
         
     }
+    
+    public func retrieveTokenServer(handle: String) async throws -> String {
+        let metadataRetriever = AtprotoMetadataRetriever()
+        let metadata = try await metadataRetriever.getResourceMetadata(handle: handle)
+        print(metadata["token_endpoint"]!)
+        return metadata["token_endpoint"] as! String
+        
+    }
 }
 
 
