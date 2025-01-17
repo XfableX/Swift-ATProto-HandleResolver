@@ -108,26 +108,12 @@ open class SwiftAtprotoOauth {
     }
     
     
-    //This will probably work but will need to have an actual UI app
-    public func OAuthRequest(authServer: String, user: String) -> URL {
-        let oauth2 = OAuth2CodeGrant(settings: [
-            "client_id": "http://localhost",
-            "redirect_uri": "http://127.0.0.1",
-            "response_type": "code",
-            "code_challenge": "ADDME",
-            "code_challenge_method": "S256",
-            "state": "ADDME",
-            "scope": "atproto ",
-            "login_hint": user,
-            "use_pkce": true,
-            
-            
-            "secret_in_body": true,    // Github needs this
-            "keychain": false,         // if you DON'T want keychain integration
-        ] as OAuth2JSON)
+    public func retrieveAuthServer(handle: String) async throws -> String {
+        let metadataRetriever = AtprotoMetadataRetriever()
+        let metadata = try await metadataRetriever.getResourceMetadata(handle: handle)
+        print(metadata["authorization_endpoint"]!)
+        return metadata["authorization_endpoint"] as! String
         
-        var req = oauth2.request(forURL: URL(string: authServer)!)
-        return req.url!
     }
 }
 

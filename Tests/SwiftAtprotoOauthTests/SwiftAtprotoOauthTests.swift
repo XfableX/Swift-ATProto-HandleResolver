@@ -27,7 +27,7 @@ import Foundation
 
 @Test func authTest() async throws {
     let oauthManager = SwiftAtprotoOauth();
-    oauthManager.OAuthRequest(authServer: "https://lachlanmaxwell.com.au", user: "fable")
+  //  oauthManager.OAuthRequest(authServer: "https://lachlanmaxwell.com.au", user: "fable")
 }
 @Test func subMethodChecks() async throws {
     // Write your test here and use APIs like `#expect(...)` to check expected conditions.
@@ -67,5 +67,13 @@ import Foundation
         failed = true
     }
     #expect(failed)
+    
+}
+
+
+@Test func authServerCheck() async throws {
+    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    let oauthManager = SwiftAtprotoOauth();
+    await #expect(try oauthManager.retrieveAuthServer(handle: "lukeplunkett.com") == "https://bsky.social/oauth/authorize")
     
 }

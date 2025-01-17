@@ -13,6 +13,16 @@ import Foundation
 @available(macOS 12.0, *)
 class AtprotoMetadataRetriever: Codable {
     
+    public func getResourceMetadata(handle: String) async throws  -> [String: Any]{
+        let oauthManager = SwiftAtprotoOauth()
+        var did = try await oauthManager.resolveDID(handle: handle)
+        return try await getResourceMetadata(did: did)
+    }
+    public func getResourceMetadata(did: String) async throws  -> [String: Any]{
+        let oauthManager = SwiftAtprotoOauth()
+        var url = try await oauthManager.getPDSUrl(did: did).absoluteString
+        return try await getResourceMetadata(url: url)
+    }
     public func getResourceMetadata(url: String) async throws  -> [String: Any]{
         
         let path = "/.well-known/oauth-protected-resource"
