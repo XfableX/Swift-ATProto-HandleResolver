@@ -3,7 +3,7 @@ import Foundation
 @testable import SwiftAtprotoOauth
 
 @Test func mainMethodCheck() async throws {
-    let oauthManager = SwiftAtprotoOauthManager();
+    let oauthManager = SwiftAtprotoOauth();
     do {await #expect(try oauthManager.resolveEndpoint(handle: "fable.lachlanmaxwell.com.au") == URL(string: "https://lachlanmaxwell.com.au"))
     }
     catch {
@@ -26,12 +26,12 @@ import Foundation
 
 
 @Test func authTest() async throws {
-    let oauthManager = SwiftAtprotoOauthManager();
+    let oauthManager = SwiftAtprotoOauth();
     oauthManager.OAuthRequest(authServer: "https://lachlanmaxwell.com.au", user: "fable")
 }
 @Test func subMethodChecks() async throws {
     // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    let oauthManager = SwiftAtprotoOauthManager();
+    let oauthManager = SwiftAtprotoOauth();
     await #expect(try oauthManager.resolveDID(handle: "lukeplunkett.com") == "did:plc:nhqvuggd6ebasluetrqfab6n")
     
     do {await #expect(try oauthManager.resolveDID(handle: "https://fable.lachlanmaxwell.com.au") == "did:plc:a4oidso5ovyo3ei7sdwhpu3j")
@@ -50,7 +50,7 @@ import Foundation
     var failed = false
     
     
-    let oauthErrManager = SwiftAtprotoOauthManager();
+    let oauthErrManager = SwiftAtprotoOauth();
     do{
         _ = try await oauthErrManager.resolveDID(handle: "google.com.au")
     }
